@@ -21,7 +21,7 @@ const DynamicLink = () => {
           if (isIOS) {
               window.location.href = 'https://apps.apple.com/kr/app/your-app-id';
           } else if (isAndroid) {
-            window.location.href = 'https://play.google.com/store/apps/details?id=your.package.name';
+            window.location.href = 'https://play.google.com/store/apps/details?id=com.zion830.threedollars';
           } else {
             navigate('/');
           }
