@@ -24,19 +24,10 @@ const DynamicLink = () => {
             setPlatform('unknown');
         }
 
-        // 안드로이드만 리다이렉트
+        // 안드로이드만 딥링크 시도
         if (isAndroid) {
-            const tryAppDeepLink = async () => {
-                const deepLink = `${appScheme}://${path}${location.search}`;
-                window.location.href = deepLink;
-                setTimeout(() => {
-                    if (document.visibilityState === 'visible') {
-                        window.location.href = 'https://play.google.com/store/apps/details?id=com.zion830.threedollars';
-                    }
-                }, 5000);
-            };
-
-            tryAppDeepLink();
+            const deepLink = `${appScheme}://${path}${location.search}`;
+            window.location.href = deepLink;
         }
     }, [path, navigate]);
 
