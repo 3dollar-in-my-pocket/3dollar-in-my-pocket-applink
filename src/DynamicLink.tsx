@@ -14,12 +14,14 @@ const DynamicLink = () => {
       window.location.href = deepLink;
       setTimeout(() => {
         if (document.visibilityState === 'visible') {
-          const userAgent = navigator.userAgent.toLowerCase();
-
-          if (/iphone|ipad|ipod|apple/.test(userAgent)) {
-            window.location.href = 'https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467';
-          } else if (/android/.test(userAgent)) {
-            window.location.href = 'https://play.google.com/store/apps/details?id=com.zion830.threedollars';
+          const ua = navigator.userAgent.toLowerCase();
+          const isIOS = /iphone|ipod/.test(ua) || (/ipad/.test(ua));
+          const isAndroid = /android/.test(ua);
+          
+          if (isIOS) {
+              window.location.href = 'https://apps.apple.com/kr/app/your-app-id';
+          } else if (isAndroid) {
+            window.location.href = 'https://play.google.com/store/apps/details?id=your.package.name';
           } else {
             navigate('/');
           }
