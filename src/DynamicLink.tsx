@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
 const DynamicLink = () => {
@@ -8,16 +8,27 @@ const DynamicLink = () => {
     const path = params['*'] || '';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
 
+    const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
+
     useEffect(() => {
+        // 플랫폼 감지
+        const ua = navigator.userAgent.toLowerCase();
+        const isIOS = /iphone|ipod/.test(ua) || (/ipad/.test(ua));
+        const isAndroid = /android/.test(ua);
+
+        if (isIOS) {
+            setPlatform('ios');
+        } else if (isAndroid) {
+            setPlatform('android');
+        } else {
+            setPlatform('unknown');
+        }
+
         const tryAppDeepLink = async () => {
             const deepLink = `${appScheme}://${path}${location.search}`;
             window.location.href = deepLink;
             setTimeout(() => {
                 if (document.visibilityState === 'visible') {
-                    const ua = navigator.userAgent.toLowerCase();
-                    const isIOS = /iphone|ipod/.test(ua) || (/ipad/.test(ua));
-                    const isAndroid = /android/.test(ua);
-
                     if (isIOS) {
                         window.location.href = 'https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467';
                     } else if (isAndroid) {
@@ -54,21 +65,25 @@ const DynamicLink = () => {
             </div>
 
             <div className="download-buttons">
-                <a href="https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467"
-                   className="download-btn">
-          <span className="icon">
-            <img src="/ios.png" alt="iOS"/>
-          </span>
-                    <span>for iOS</span>
-                </a>
+                {(platform === 'ios' || platform === 'unknown') && (
+                    <a href="https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467"
+                       className="download-btn">
+                        <span className="icon">
+                            <img src="/ios.png" alt="iOS"/>
+                        </span>
+                        <span>for iOS</span>
+                    </a>
+                )}
 
-                <a href="market://details?id=com.zion830.threedollars"
-                   className="download-btn">
-          <span className="icon">
-            <img src="/android.svg" alt="Android"/>
-          </span>
-                    <span>for Android</span>
-                </a>
+                {(platform === 'android' || platform === 'unknown') && (
+                    <a href="https://play.google.com/store/apps/details?id=com.zion830.threedollars"
+                       className="download-btn">
+                        <span className="icon">
+                            <img src="/android.svg" alt="Android"/>
+                        </span>
+                        <span>for Android</span>
+                    </a>
+                )}
             </div>
         </div>
     );
