@@ -9,6 +9,7 @@ const Bookmark = () => {
     const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
 
     const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
+    const [showDownloadLink, setShowDownloadLink] = useState(false);
 
     useEffect(() => {
         const ua = navigator.userAgent.toLowerCase();
@@ -22,11 +23,6 @@ const Bookmark = () => {
         } else {
             setPlatform('unknown');
         }
-
-        if (isAndroid) {
-            const deepLink = `${appScheme}://bookmark${location.search}`;
-            window.location.href = deepLink;
-        }
     }, [navigate, location.search]);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -34,16 +30,15 @@ const Bookmark = () => {
 
         const deepLink = `${appScheme}://bookmark${location.search}`;
         const startTime = Date.now();
-        const storeUrl = platform === 'android' ? androidAppStoreUrl : iosAppStoreUrl;
 
         window.location.href = deepLink;
 
         setTimeout(() => {
             const elapsedTime = Date.now() - startTime;
-            if (elapsedTime < 3500) {
-                window.location.href = storeUrl;
+            if (elapsedTime < 1500) {
+                setShowDownloadLink(true);
             }
-        }, 3000);
+        }, 1000);
     };
 
     return (
@@ -62,12 +57,48 @@ const Bookmark = () => {
                 </p>
             </div>
 
-            <div className="download-buttons">
-                <a href={platform === 'android' ? androidAppStoreUrl : iosAppStoreUrl}
+            <div className="download-buttons" style={{ flexDirection: 'column', alignItems: 'center' }}>
+                <a href="#"
                    onClick={handleClick}
                    className="download-btn bookmark-btn">
                     <span>보러가기</span>
                 </a>
+
+                {showDownloadLink && (
+                    <div className="download-link-container">
+                        <p className="download-message">앱이 설치되어 있지 않나요?</p>
+                        {platform !== 'unknown' ? (
+                            <a
+                                href={platform === 'android' ? androidAppStoreUrl : iosAppStoreUrl}
+                                className="download-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                앱 다운로드 하기
+                            </a>
+                        ) : (
+                            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '8px' }}>
+                                <a
+                                    href={iosAppStoreUrl}
+                                    className="download-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    iOS 다운로드
+                                </a>
+                                <span style={{ color: '#ffffff', opacity: 0.5 }}>|</span>
+                                <a
+                                    href={androidAppStoreUrl}
+                                    className="download-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Android 다운로드
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
