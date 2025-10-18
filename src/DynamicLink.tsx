@@ -33,7 +33,7 @@ const DynamicLink = () => {
                     if (document.visibilityState === 'visible') {
                         window.location.href = 'https://play.google.com/store/apps/details?id=com.zion830.threedollars';
                     }
-                }, 2000);
+                }, 5000);
             };
 
             tryAppDeepLink();
