@@ -11,6 +11,7 @@ const DynamicLink = () => {
     const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
 
     const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
+    const [showDownloadLink, setShowDownloadLink] = useState(false);
 
     useEffect(() => {
         const ua = navigator.userAgent.toLowerCase();
@@ -24,14 +25,9 @@ const DynamicLink = () => {
         } else {
             setPlatform('unknown');
         }
+    }, [navigate, location.search]);
 
-        if (isAndroid) {
-            const deepLink = `${appScheme}://${path}${location.search}`;
-            window.location.href = deepLink;
-        }
-    }, [path, navigate]);
-
-    const handleIOSClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
 
         const deepLink = `${appScheme}://${path}${location.search}`;
@@ -41,26 +37,10 @@ const DynamicLink = () => {
 
         setTimeout(() => {
             const elapsedTime = Date.now() - startTime;
-            if (elapsedTime < 3500) {
-                window.location.href = iosAppStoreUrl;
+            if (elapsedTime < 1500) {
+                setShowDownloadLink(true);
             }
-        }, 3000);
-    };
-
-    const handleAndroidClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-
-        const deepLink = `${appScheme}://${path}${location.search}`;
-        const startTime = Date.now();
-
-        window.location.href = deepLink;
-
-        setTimeout(() => {
-            const elapsedTime = Date.now() - startTime;
-            if (elapsedTime < 3500) {
-                window.location.href = androidAppStoreUrl;
-            }
-        }, 3000);
+        }, 1000);
     };
 
     return (
@@ -82,31 +62,51 @@ const DynamicLink = () => {
 
                 <p className="description">
                     다양한 길거리 음식들의 위치가 궁금했다면<br/>
-                    지금 바로 가슴속 3천원을 다운로드 해보세요!
+                    지금 바로 가슴속 3천원을 이용해보세요!
                 </p>
             </div>
 
-            <div className="download-buttons">
-                {(platform === 'ios' || platform === 'unknown') && (
-                    <a href={iosAppStoreUrl}
-                       onClick={handleIOSClick}
-                       className="download-btn">
-                        <span className="icon">
-                            <img src="/ios.png" alt="iOS"/>
-                        </span>
-                        <span>for iOS</span>
-                    </a>
-                )}
+            <div className="download-buttons" style={{ flexDirection: 'column', alignItems: 'center' }}>
+                <a href="#"
+                   onClick={handleClick}
+                   className="download-btn bookmark-btn">
+                    <span>보러가기</span>
+                </a>
 
-                {(platform === 'android' || platform === 'unknown') && (
-                    <a href={androidAppStoreUrl}
-                       onClick={handleAndroidClick}
-                       className="download-btn">
-                        <span className="icon">
-                            <img src="/android.svg" alt="Android"/>
-                        </span>
-                        <span>for Android</span>
-                    </a>
+                {showDownloadLink && (
+                    <div className="download-link-container">
+                        <p className="download-message">앱이 설치되어 있지 않나요?</p>
+                        {platform !== 'unknown' ? (
+                            <a
+                                href={platform === 'android' ? androidAppStoreUrl : iosAppStoreUrl}
+                                className="download-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                앱 다운로드 하기
+                            </a>
+                        ) : (
+                            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '8px' }}>
+                                <a
+                                    href={iosAppStoreUrl}
+                                    className="download-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    iOS 다운로드
+                                </a>
+                                <span style={{ color: '#ffffff', opacity: 0.5 }}>|</span>
+                                <a
+                                    href={androidAppStoreUrl}
+                                    className="download-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Android 다운로드
+                                </a>
+                            </div>
+                        )}
+                    </div>
                 )}
             </div>
         </div>
