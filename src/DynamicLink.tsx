@@ -7,6 +7,8 @@ const DynamicLink = () => {
     const location = useLocation();
     const path = params['*'] || '';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
+    const iosAppStoreUrl = "https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467";
+    const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
 
     const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
 
@@ -24,12 +26,43 @@ const DynamicLink = () => {
             setPlatform('unknown');
         }
 
-        // 안드로이드만 딥링크 시도
         if (isAndroid) {
             const deepLink = `${appScheme}://${path}${location.search}`;
             window.location.href = deepLink;
         }
     }, [path, navigate]);
+
+    const handleIOSClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+
+        const deepLink = `${appScheme}://${path}${location.search}`;
+        const startTime = Date.now();
+
+        window.location.href = deepLink;
+
+        setTimeout(() => {
+            const elapsedTime = Date.now() - startTime;
+            if (elapsedTime < 2500) {
+                window.location.href = iosAppStoreUrl;
+            }
+        }, 4000);
+    };
+
+    const handleAndroidClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+
+        const deepLink = `${appScheme}://${path}${location.search}`;
+        const startTime = Date.now();
+
+        window.location.href = deepLink;
+
+        setTimeout(() => {
+            const elapsedTime = Date.now() - startTime;
+            if (elapsedTime < 2500) {
+                window.location.href = androidAppStoreUrl;
+            }
+        }, 4000);
+    };
 
     return (
         <div className="container">
@@ -56,7 +89,8 @@ const DynamicLink = () => {
 
             <div className="download-buttons">
                 {(platform === 'ios' || platform === 'unknown') && (
-                    <a href="https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467"
+                    <a href={iosAppStoreUrl}
+                       onClick={handleIOSClick}
                        className="download-btn">
                         <span className="icon">
                             <img src="/ios.png" alt="iOS"/>
@@ -66,7 +100,8 @@ const DynamicLink = () => {
                 )}
 
                 {(platform === 'android' || platform === 'unknown') && (
-                    <a href="https://play.google.com/store/apps/details?id=com.zion830.threedollars"
+                    <a href={androidAppStoreUrl}
+                       onClick={handleAndroidClick}
                        className="download-btn">
                         <span className="icon">
                             <img src="/android.svg" alt="Android"/>
