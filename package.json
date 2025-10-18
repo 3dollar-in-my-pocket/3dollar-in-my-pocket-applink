@@ -7,13 +7,14 @@
     "copy-aasa": "node scripts/copy-aasa.js",
     "dev": "npm run copy-aasa && vite",
     "build": "npm run copy-aasa && tsc && vite build",
-    "build:dev": "VITE_ENV=dev npm run build",
-    "build:prod": "VITE_ENV=prod npm run build",
+    "build:dev": "npm run copy-aasa && tsc && vite build --mode development",
+    "build:prod": "npm run copy-aasa && tsc && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",
