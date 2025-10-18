@@ -30,7 +30,7 @@ const Home = () => {
           <span>for iOS</span>
         </a>
 
-        <a href="https://play.google.com/store/apps/details?id=com.zion830.threedollars"
+        <a href="market://details?id=com.zion830.threedollars"
            className="download-btn">
           <span className="icon">
             <img src="/android.svg" alt="Android" />
