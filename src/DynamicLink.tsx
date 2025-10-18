@@ -13,7 +13,6 @@ const DynamicLink = () => {
     const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
 
     useEffect(() => {
-        // 플랫폼 감지
         const ua = navigator.userAgent.toLowerCase();
         const isIOS = /iphone|ipod/.test(ua) || (/ipad/.test(ua));
         const isAndroid = /android/.test(ua);
@@ -42,10 +41,10 @@ const DynamicLink = () => {
 
         setTimeout(() => {
             const elapsedTime = Date.now() - startTime;
-            if (elapsedTime < 2500) {
+            if (elapsedTime < 3500) {
                 window.location.href = iosAppStoreUrl;
             }
-        }, 4000);
+        }, 3000);
     };
 
     const handleAndroidClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -58,10 +57,10 @@ const DynamicLink = () => {
 
         setTimeout(() => {
             const elapsedTime = Date.now() - startTime;
-            if (elapsedTime < 2500) {
+            if (elapsedTime < 3500) {
                 window.location.href = androidAppStoreUrl;
             }
-        }, 4000);
+        }, 3000);
     };
 
     return (
