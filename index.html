@@ -1,180 +1,190 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="가슴속3천원 - 나와 가까운 푸드트럭과 길거리 음식" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="가슴속3천원 - 나와 가까운 푸드트럭과 길거리 음식"/>
     <title>가슴속3천원</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://app.threedollars.co.kr/"/>
+    <meta property="og:title" content="가슴속3천원"/>
+    <meta property="og:description" content="나와 가까운 푸드트럭과 길거리 음식"/>
+    <meta property="og:image" content="/og_image.png"/>
+    <meta name="apple-itunes-app" content="app-id=X975A2HM62.com.macgongmon.-dollar-in-my-pocket, app-argument=dollars://home">
+
+    <link rel="apple-touch-icon" href="/favicon.ico">
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      body {
-        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        background-color: #2a2a2a;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-      }
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #2a2a2a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-      .container {
-        text-align: center;
-        max-width: 600px;
-        width: 100%;
-      }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
 
-      .title {
-        margin-bottom: 60px;
-      }
+        .title {
+            margin-bottom: 60px;
+        }
 
-      .title-line {
-        font-size: 48px;
-        font-weight: 900;
-        line-height: 1.4;
-        margin-bottom: 8px;
-        letter-spacing: -0.02em;
-      }
-
-      .title-line .highlight {
-        color: #e88b8b;
-      }
-
-      .title-line .white {
-        color: #ffffff;
-      }
-
-      .description {
-        color: #ffffff;
-        font-size: 18px;
-        line-height: 1.6;
-        margin-top: 40px;
-        font-weight: 400;
-      }
-
-      .download-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 60px;
-        flex-wrap: wrap;
-      }
-
-      .download-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        padding: 18px 40px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        transition: transform 0.2s, opacity 0.2s;
-        background-color: #d17a6f;
-        color: white;
-        min-width: 200px;
-      }
-
-      .download-btn:hover {
-        opacity: 0.9;
-      }
-
-      .download-btn:active {
-        transform: scale(0.98);
-      }
-
-      .icon {
-        display: flex;
-        align-items: center;
-        width: 24px;
-        height: 24px;
-      }
-
-      .icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      .bookmark-btn {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .download-link-container {
-        margin-top: 24px;
-        text-align: center;
-        width: 100%;
-      }
-
-      .download-message {
-        color: #ffffff;
-        font-size: 14px;
-        margin-bottom: 12px;
-        opacity: 0.8;
-      }
-
-      .download-link {
-        color: #e88b8b;
-        font-size: 14px;
-        text-decoration: underline;
-        transition: opacity 0.2s;
-      }
-
-      .download-link:hover {
-        opacity: 0.8;
-      }
-
-      @media (max-width: 768px) {
         .title-line {
-          font-size: 36px;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .title-line .highlight {
+            color: #e88b8b;
+        }
+
+        .title-line .white {
+            color: #ffffff;
         }
 
         .description {
-          font-size: 16px;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 40px;
+            font-weight: 400;
         }
 
         .download-buttons {
-          flex-direction: column;
-          align-items: center;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 60px;
+            flex-wrap: wrap;
         }
 
         .download-btn {
-          width: 100%;
-          max-width: 300px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .title-line {
-          font-size: 28px;
-        }
-
-        .description {
-          font-size: 14px;
-          margin-top: 30px;
-        }
-
-        .download-buttons {
-          margin-top: 40px;
-          gap: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+            background-color: #d17a6f;
+            color: white;
+            min-width: 200px;
         }
 
-        .download-btn {
-          font-size: 18px;
-          padding: 16px 32px;
+        .download-btn:hover {
+            opacity: 0.9;
         }
-      }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .bookmark-btn {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .download-link-container {
+            margin-top: 24px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .download-message {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .download-link {
+            color: #e88b8b;
+            font-size: 14px;
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+
+        .download-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .title-line {
+                font-size: 36px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-line {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 14px;
+                margin-top: 30px;
+            }
+
+            .download-buttons {
+                margin-top: 40px;
+                gap: 16px;
+            }
+
+            .download-btn {
+                font-size: 18px;
+                padding: 16px 32px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
