@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const env = process.env.VITE_ENV || 'dev';
+const env = process.env.VITE_ENV;
 const sourceFile = `${__dirname}/../config/aasa/${env}.json`;
 const destDir = `${__dirname}/../public/.well-known`;
 const destFile = `${destDir}/apple-app-site-association`;

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "copy-aasa": "node scripts/copy-aasa.js",
-    "dev": "npm run copy-aasa && vite",
-    "build": "npm run copy-aasa && tsc && vite build",
-    "build:dev": "npm run copy-aasa && tsc && vite build --mode development",
-    "build:prod": "npm run copy-aasa && tsc && vite build --mode production",
+    "dev": "VITE_ENV=dev npm run copy-aasa && vite --mode development",
+    "prod": "VITE_ENV=prod npm run copy-aasa && vite --mode production",
+    "build": "VITE_ENV=dev npm run copy-aasa && tsc && vite build --mode development",
+    "build:dev": "VITE_ENV=dev npm run copy-aasa && tsc && vite build --mode development",
+    "build:prod": "VITE_ENV=prod npm run copy-aasa && tsc && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
