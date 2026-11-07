@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
-import villagePreview from './assets/boong-village-preview.png';
 import './BoongVillage.css';
 import './TopRankings.css';
 
@@ -143,7 +142,7 @@ const DynamicLink = () => {
             </div>
             {isBoongVillage && (
                 <figure className="boong-preview">
-                    <img src={villagePreview} alt="붕어 빌리지 게임 화면. 팥과 슈크림을 골라 붕어빵을 굽고 손님에게 판매하는 모습" />
+                    <img src="/boong-village-preview.png" alt="붕어 빌리지 게임 화면. 팥과 슈크림을 골라 붕어빵을 굽고 손님에게 판매하는 모습" />
                     <figcaption>나만의 붕어빵 가게를 열어보세요</figcaption>
                 </figure>
             )}
