@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import villagePreview from './assets/boong-village-preview.png';
 import './BoongVillage.css';
+import './TopRankings.css';
 
 const DynamicLink = () => {
     const params = useParams();
@@ -9,6 +10,7 @@ const DynamicLink = () => {
     const location = useLocation();
     const path = params['*'] || '';
     const isBoongVillage = path === 'boong-vilage';
+    const isTopRankings = path === 'top-ranking' || path === 'top-rankings';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
     const iosAppStoreUrl = "https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467";
     const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
@@ -17,7 +19,9 @@ const DynamicLink = () => {
     const [showDownloadLink, setShowDownloadLink] = useState(false);
     const destination = isBoongVillage
         ? `browser?url=${encodeURIComponent(import.meta.env.VITE_BOONG_VILLAGE_URL)}`
-        : `${path}${location.search}`;
+        : isTopRankings
+            ? 'home?tabId=CURATION'
+            : `${path}${location.search}`;
     const deepLink = `${appScheme}://${destination}`;
 
     useEffect(() => {
@@ -50,7 +54,7 @@ const DynamicLink = () => {
     };
 
     return (
-        <div className={isBoongVillage ? 'container boong-page' : 'container'}>
+        <div className={isBoongVillage ? 'container boong-page' : isTopRankings ? 'container rankings-page' : 'container'}>
             {isBoongVillage ? (
                 <div className="title boong-intro">
                     <h1>붕어 빌리지</h1>
@@ -58,6 +62,17 @@ const DynamicLink = () => {
                     <p className="description">
                         붕어빌리지 OPEN!<br />
                         나만의 붕어빵 가게, 지금 시작해보세요!
+                    </p>
+                </div>
+            ) : isTopRankings ? (
+                <div className="title">
+                    <h1 className="title-line">
+                        지금 인기 있는<br />
+                        <span className="highlight">길거리 맛집 랭킹</span>
+                    </h1>
+                    <p className="description">
+                        오늘은 어디로 먹으러 갈까요?<br />
+                        가슴속 3천원에서 인기 가게를 만나보세요.
                     </p>
                 </div>
             ) : (
@@ -87,7 +102,7 @@ const DynamicLink = () => {
                 <a href={deepLink}
                    onClick={handleClick}
                    className="download-btn bookmark-btn">
-                    <span>{isBoongVillage ? '장사 시작하기' : '보러가기'}</span>
+                    <span>{isBoongVillage ? '장사 시작하기' : isTopRankings ? '랭킹 보러가기' : '보러가기'}</span>
                 </a>
 
                 {showDownloadLink && (
