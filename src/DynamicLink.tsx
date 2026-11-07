@@ -1,17 +1,24 @@
 import {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import villagePreview from './assets/boong-village-preview.png';
+import './BoongVillage.css';
 
 const DynamicLink = () => {
     const params = useParams();
     const navigate = useNavigate();
     const location = useLocation();
     const path = params['*'] || '';
+    const isBoongVillage = path === 'boong-vilage';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
     const iosAppStoreUrl = "https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467";
     const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
 
     const [platform, setPlatform] = useState<'ios' | 'android' | 'unknown'>('unknown');
     const [showDownloadLink, setShowDownloadLink] = useState(false);
+    const destination = isBoongVillage
+        ? `browser?url=${encodeURIComponent(import.meta.env.VITE_BOONG_VILLAGE_URL)}`
+        : `${path}${location.search}`;
+    const deepLink = `${appScheme}://${destination}`;
 
     useEffect(() => {
         const ua = navigator.userAgent.toLowerCase();
@@ -30,7 +37,6 @@ const DynamicLink = () => {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
 
-        const deepLink = `${appScheme}://${path}${location.search}`;
         const startTime = Date.now();
 
         window.location.href = deepLink;
@@ -44,7 +50,17 @@ const DynamicLink = () => {
     };
 
     return (
-        <div className="container">
+        <div className={isBoongVillage ? 'container boong-page' : 'container'}>
+            {isBoongVillage ? (
+                <div className="title boong-intro">
+                    <h1>붕어 빌리지</h1>
+                    <p className="boong-headline">이세계에선 내가<br />붕어빵 사장님? 🐟</p>
+                    <p className="description">
+                        붕어빌리지 OPEN!<br />
+                        나만의 붕어빵 가게, 지금 시작해보세요!
+                    </p>
+                </div>
+            ) : (
             <div className="title">
                 <div className="title-line">
                     <span className="white">언제 어디서 </span><span className="highlight">붕어빵</span><span
@@ -65,12 +81,13 @@ const DynamicLink = () => {
                     지금 바로 가슴속 3천원을 이용해보세요!
                 </p>
             </div>
+            )}
 
             <div className="download-buttons" style={{ flexDirection: 'column', alignItems: 'center' }}>
-                <a href="#"
+                <a href={deepLink}
                    onClick={handleClick}
                    className="download-btn bookmark-btn">
-                    <span>보러가기</span>
+                    <span>{isBoongVillage ? '장사 시작하기' : '보러가기'}</span>
                 </a>
 
                 {showDownloadLink && (
@@ -109,6 +126,12 @@ const DynamicLink = () => {
                     </div>
                 )}
             </div>
+            {isBoongVillage && (
+                <figure className="boong-preview">
+                    <img src={villagePreview} alt="붕어 빌리지 게임 화면. 팥과 슈크림을 골라 붕어빵을 굽고 손님에게 판매하는 모습" />
+                    <figcaption>나만의 붕어빵 가게를 열어보세요</figcaption>
+                </figure>
+            )}
         </div>
     );
 };
