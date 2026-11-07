@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
 
       this.emitFile({
         type: 'asset',
-        fileName: 'boong-vilage/index.html',
+        fileName: 'boong-vilage.html',
         source: index.source
           .replace('<title>가슴속3천원</title>', '<title>붕어빌리지</title>')
           .replace(

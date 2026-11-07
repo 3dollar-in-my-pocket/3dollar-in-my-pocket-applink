@@ -8,7 +8,7 @@ const DynamicLink = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const path = params['*'] || '';
-    const isBoongVillage = path === 'boong-vilage';
+    const isBoongVillage = path === 'boong-vilage' || path === 'boong-vilage/';
     const isTopRankings = path === 'top-ranking' || path === 'top-rankings';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
     const iosAppStoreUrl = "https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467";

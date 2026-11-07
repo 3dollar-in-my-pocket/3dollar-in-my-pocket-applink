@@ -1,4 +1,4 @@
 /.well-known/* /.well-known/:splat 200
-/boong-vilage /boong-vilage/index.html 200
-/boong-vilage/ /boong-vilage/index.html 200
+/boong-vilage /boong-vilage.html 200
+/boong-vilage/ /boong-vilage.html 200
 /*    /index.html   200
