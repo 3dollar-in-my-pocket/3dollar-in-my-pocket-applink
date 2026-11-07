@@ -1,0 +1,124 @@
+body:has(.boong-page) {
+    background: #fff7e9;
+    color: #49301f;
+    padding: 40px 24px;
+}
+
+.boong-page {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    column-gap: 80px;
+    align-items: center;
+}
+
+.boong-page .title {
+    margin: 0;
+    align-self: end;
+    text-align: left;
+}
+
+.boong-intro h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #99511d;
+    margin-bottom: 32px;
+}
+
+.boong-headline {
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 850;
+    line-height: 1.35;
+    letter-spacing: -0.045em;
+}
+
+.boong-page .description {
+    color: #705b48;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-top: 24px;
+}
+
+.boong-page .download-buttons {
+    grid-column: 1;
+    align-self: start;
+    align-items: flex-start !important;
+    margin-top: 32px;
+}
+
+.boong-page .download-btn {
+    background: #a64d22;
+    border-radius: 16px;
+    max-width: 320px;
+}
+
+.boong-page .download-btn:focus-visible {
+    outline: 3px solid #49301f;
+    outline-offset: 5px;
+}
+
+.boong-page .download-message {
+    color: #705b48;
+    opacity: 1;
+}
+
+.boong-page .download-link {
+    color: #8b3e19;
+}
+
+.boong-preview {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    margin: 0;
+}
+
+.boong-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 6px solid #49301f;
+    border-radius: 28px;
+}
+
+.boong-preview figcaption {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #705b48;
+}
+
+@media (max-width: 700px) {
+    body:has(.boong-page) {
+        padding: 36px 24px;
+    }
+
+    .boong-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .boong-page .title {
+        text-align: center;
+        align-self: center;
+    }
+
+    .boong-intro h1 {
+        margin-bottom: 20px;
+        font-size: 21px;
+    }
+
+    .boong-page .description {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+
+    .boong-page .download-buttons {
+        align-self: stretch;
+        align-items: center !important;
+        margin-top: 28px;
+    }
+
+    .boong-preview {
+        width: min(100%, 280px);
+        margin-top: 40px;
+    }
+}

@@ -1,0 +1,19 @@
+.rankings-page {
+    color: #fff;
+}
+
+.rankings-page .title-line {
+    font-size: clamp(30px, 6vw, 48px);
+    letter-spacing: -0.04em;
+    line-height: 1.5;
+}
+
+.rankings-page .description {
+    font-size: clamp(14px, 3vw, 18px);
+    line-height: 1.8;
+}
+
+.rankings-page .download-btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 5px;
+}
