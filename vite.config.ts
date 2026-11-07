@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => ({
           )
           .replace(
             '<meta property="og:image" content="/og_image.png"/>',
-            '<meta property="og:image" content="https://app.threedollars.co.kr/boong-village-preview.png"/>',
+            '<meta property="og:image" content="https://app.threedollars.co.kr/og-boong-village.png"/>\n    <meta property="og:image:width" content="1200"/>\n    <meta property="og:image:height" content="630"/>\n    <meta property="og:image:alt" content="붕어빌리지 게임 화면"/>',
           ),
       });
     },
