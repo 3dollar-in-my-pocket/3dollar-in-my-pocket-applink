@@ -1,0 +1,33 @@
+body:has(.romance-page) {
+    background: #178456;
+}
+
+.romance-title {
+    color: #fff;
+    font-size: clamp(20px, 5vw, 28px);
+    margin-bottom: 24px;
+}
+
+.romance-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.romance-page .download-buttons {
+    margin-top: 24px;
+}
+
+.romance-page .download-btn {
+    background: #fff;
+    color: #185d3f;
+}
+
+.romance-page .download-btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 5px;
+}
+
+.romance-page .download-link {
+    color: #fff;
+}

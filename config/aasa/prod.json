@@ -5,6 +5,14 @@
         "appIDs": ["X975A2HM62.com.macgongmon.-dollar-in-my-pocket"],
         "components": [
           {
+            "/": "/silblings_romance_2",
+            "exclude": true
+          },
+          {
+            "/": "/silblings_romance_2/",
+            "exclude": true
+          },
+          {
             "/": "*"
           }
         ]
