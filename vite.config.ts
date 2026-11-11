@@ -13,6 +13,19 @@ export default defineConfig(({ mode }) => ({
 
       this.emitFile({
         type: 'asset',
+        fileName: 'silblings_romance_2.html',
+        source: index.source
+          .replace('<title>가슴속3천원</title>', '<title>연애남매2 × 가슴속 3천원</title>')
+          .replace('가슴속3천원 - 나와 가까운 푸드트럭과 길거리 음식', '연애남매2 투표에 참여해보세요!')
+          .replace('<meta property="og:title" content="가슴속3천원"/>', '<meta property="og:title" content="연애남매2 × 가슴속 3천원"/>')
+          .replace('<meta property="og:description" content="나와 가까운 푸드트럭과 길거리 음식"/>', '<meta property="og:description" content="연애남매2 투표에 참여해보세요!"/>')
+          .replace('<meta property="og:url" content="https://app.threedollars.co.kr/"/>', '<meta property="og:url" content="https://app.threedollars.co.kr/silblings_romance_2"/>')
+          .replace('<meta property="og:image" content="/og_image.png"/>', '<meta property="og:image" content="https://storage.threedollars.co.kr/popup/v1-bb945a25-bef0-409f-b3d7-d806c8e90d7a.png"/>')
+          .replace('app-argument=dollars://home', `app-argument=${mode === 'production' ? 'dollars://pollDetail?pollId=13482757' : 'dollars-dev://pollDetail?pollId=13482753'}`),
+      });
+
+      this.emitFile({
+        type: 'asset',
         fileName: 'boong-vilage.html',
         source: index.source
           .replace('<title>가슴속3천원</title>', '<title>붕어빌리지</title>')

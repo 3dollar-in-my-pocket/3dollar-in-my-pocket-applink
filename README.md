@@ -1,12 +1,5 @@
 # 가슴속 3천원 앱 링크
 
-`/boong-vilage` 공유 미리보기는 1200×630 크기의 `public/og-boong-village.png`를 사용합니다.
-페이지 본문의 세로 게임 화면은 `public/boong-village-preview.png`를 사용합니다.
-제목은 `붕어빌리지`, 설명은 `이세계에선 내가 붕어빵 사장님?`으로 표시합니다.
-Vite 빌드 시 전용 `dist/boong-vilage.html`을 생성하고, `public/_redirects`에서
-해당 HTML로 연결해 JavaScript를 실행하지 않는 공유 크롤러에도 이미지를 제공합니다.
-그 외 경로는 기존 `og_image.png`를 사용합니다.
-
 # 서비스 소개
 
 ## Introduction
