@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "copy-aasa": "node scripts/copy-aasa.js",
     "dev": "VITE_ENV=dev npm run copy-aasa && vite --mode development",
