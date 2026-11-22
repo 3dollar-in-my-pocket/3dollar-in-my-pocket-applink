@@ -52,6 +52,10 @@ export default defineConfig(({ mode }) => ({
       });
     },
   }],
+  build: {
+    // Vite 8의 기본 타깃(Safari 16.4+ 등)보다 낮은 구형 모바일 브라우저 지원을 유지하기 위해 Vite 5 기본값을 명시
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+  },
   publicDir: 'public',
   server: {
     port: 3000,
