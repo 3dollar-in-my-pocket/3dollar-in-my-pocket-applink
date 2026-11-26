@@ -13,6 +13,19 @@ export default defineConfig(({ mode }) => ({
 
       this.emitFile({
         type: 'asset',
+        fileName: 'event/2026-good-promotion.html',
+        source: index.source
+          .replace('<title>가슴속3천원</title>', '<title>붕어빵 활동하고 붕어빵 굿즈 받자! | 가슴속 3천원</title>')
+          .replace('가슴속3천원 - 나와 가까운 푸드트럭과 길거리 음식', '앱에서 활동을 할 때마다 포인트가 쌓여요. 모은 포인트로 붕어빵 굿즈에 응모해 보세요.')
+          .replace('<meta property="og:title" content="가슴속3천원"/>', '<meta property="og:title" content="붕어빵 활동하고 붕어빵 굿즈 받자!"/>')
+          .replace('<meta property="og:description" content="나와 가까운 푸드트럭과 길거리 음식"/>', '<meta property="og:description" content="앱에서 활동을 할 때마다 포인트가 쌓여요. 모은 포인트로 붕어빵 굿즈에 응모해 보세요."/>')
+          .replace('<meta property="og:url" content="https://app.threedollars.co.kr/"/>', '<meta property="og:url" content="https://app.threedollars.co.kr/event/2026-good-promotion"/>')
+          .replace('<meta property="og:image" content="/og_image.png"/>', '<meta property="og:image" content="https://app.threedollars.co.kr/events/2026-good-promotion/hero.png"/>\n    <meta property="og:image:alt" content="붕어빵 키링이 달린 하트 마스코트"/>')
+          .replace('app-argument=dollars://home', `app-argument=${mode === 'production' ? 'dollars' : 'dollars-dev'}://home`),
+      });
+
+      this.emitFile({
+        type: 'asset',
         fileName: 'silblings_romance_2.html',
         source: index.source
           .replace('<title>가슴속3천원</title>', '<title>연애남매2 × 가슴속 3천원</title>')

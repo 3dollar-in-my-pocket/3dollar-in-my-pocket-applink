@@ -1,0 +1,183 @@
+body:has(.goods-page) {
+    display: block;
+    padding: 0;
+    background: #fff;
+    color: #0f0f0f;
+}
+
+.goods-page {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.goods-hero {
+    padding: 28px 24px 32px;
+    background: #fff0ef;
+}
+
+.goods-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #c43d3d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.goods-title {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+}
+
+.goods-accent {
+    color: #c43d3d;
+}
+
+.goods-lead {
+    margin-top: 16px;
+    color: #5a5a5a;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.goods-hero-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 24px;
+    background: #ffd5d2;
+}
+
+.goods-hero-image img {
+    width: 70%;
+    max-width: 290px;
+    height: auto;
+}
+
+.goods-info {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: #fff;
+    font-size: 14px;
+}
+
+.goods-info div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.goods-info dt {
+    color: #5a5a5a;
+}
+
+.goods-info dd {
+    font-weight: 700;
+    text-align: right;
+}
+
+.goods-section {
+    padding: 36px 24px 0;
+}
+
+.goods-kicker {
+    color: #c43d3d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.goods-section h2 {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.goods-prizes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.goods-prize {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    border: 1px solid #e2e2e2;
+    border-radius: 20px;
+}
+
+.goods-prize img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.goods-prize h3 {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.goods-prize p {
+    flex: 1;
+    margin-top: 6px;
+    color: #5a5a5a;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.goods-howto {
+    margin: 24px 24px 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: #fff0ef;
+    color: #c43d3d;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.goods-footnote {
+    padding: 32px 24px;
+    color: #8a8a8a;
+    font-size: 13px;
+}
+
+.goods-page .download-buttons {
+    position: sticky;
+    bottom: 0;
+    margin-top: 0;
+    padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -1px 0 #f0f0f0;
+}
+
+.goods-page .download-btn.bookmark-btn {
+    max-width: none;
+    border-radius: 16px;
+    background: #e96060;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.goods-page .download-btn:focus-visible {
+    outline: 3px solid #c43d3d;
+    outline-offset: 3px;
+}
+
+.goods-page .download-message {
+    color: #5a5a5a;
+}
+
+.goods-page .download-link {
+    color: #c43d3d;
+}
