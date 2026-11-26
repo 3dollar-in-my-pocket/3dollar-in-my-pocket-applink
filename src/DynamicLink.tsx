@@ -3,6 +3,7 @@ import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import './BoongVillage.css';
 import './TopRankings.css';
 import './SiblingsRomance.css';
+import GoodsPromotion from './GoodsPromotion';
 
 const DynamicLink = () => {
     const params = useParams();
@@ -12,6 +13,7 @@ const DynamicLink = () => {
     const isBoongVillage = path === 'boong-vilage' || path === 'boong-vilage/';
     const isTopRankings = path === 'top-ranking' || path === 'top-rankings';
     const isSiblingsRomance = path === 'silblings_romance_2' || path === 'silblings_romance_2/';
+    const isGoodsPromotion = path === 'event/2026-good-promotion' || path === 'event/2026-good-promotion/';
     const appScheme = import.meta.env.VITE_APP_SCHEME || 'dollars';
     const iosAppStoreUrl = "https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D-3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD%EA%B3%BC-%EA%B8%B8%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D/id1496099467";
     const androidAppStoreUrl = "https://play.google.com/store/apps/details?id=com.zion830.threedollars";
@@ -22,6 +24,8 @@ const DynamicLink = () => {
         ? `browser?url=${encodeURIComponent(import.meta.env.VITE_BOONG_VILLAGE_URL)}`
         : isTopRankings
             ? 'home?tabId=CURATION'
+            : isGoodsPromotion
+            ? 'home'
             : isSiblingsRomance
                 ? `pollDetail?pollId=${import.meta.env.MODE === 'production' ? '13482757' : '13482753'}`
                 : `${path}${location.search}`;
@@ -57,8 +61,10 @@ const DynamicLink = () => {
     };
 
     return (
-        <div className={isBoongVillage ? 'container boong-page' : isTopRankings ? 'container rankings-page' : isSiblingsRomance ? 'container romance-page' : 'container'}>
-            {isSiblingsRomance ? (
+        <div className={isBoongVillage ? 'container boong-page' : isTopRankings ? 'container rankings-page' : isSiblingsRomance ? 'container romance-page' : isGoodsPromotion ? 'container goods-page' : 'container'}>
+            {isGoodsPromotion ? (
+                <GoodsPromotion/>
+            ) : isSiblingsRomance ? (
                 <>
                     <h1 className="romance-title">연애남매2 × 가슴속 3천원</h1>
                     <img
@@ -114,7 +120,7 @@ const DynamicLink = () => {
                 <a href={deepLink}
                    onClick={handleClick}
                    className="download-btn bookmark-btn">
-                    <span>{isSiblingsRomance ? '투표 참여하기' : isBoongVillage ? '장사 시작하기' : isTopRankings ? '랭킹 보러가기' : '보러가기'}</span>
+                    <span>{isGoodsPromotion ? '굿즈 응모하러 가기' : isSiblingsRomance ? '투표 참여하기' : isBoongVillage ? '장사 시작하기' : isTopRankings ? '랭킹 보러가기' : '보러가기'}</span>
                 </a>
 
                 {showDownloadLink && (
